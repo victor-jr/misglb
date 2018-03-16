@@ -4,9 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
-import { Router } from 'react-router';
 import * as RoutesModule from './routes';
-import history from './service/History/History';
 
 let routes = RoutesModule.routes;
 
@@ -15,7 +13,7 @@ function renderApp() {
     // configuration and injects the app into a DOM element.
     ReactDOM.render(
         <AppContainer>
-            <Router children={ routes } history={ history }></Router>
+            <BrowserRouter children={ routes }></BrowserRouter>
         </AppContainer>,
         document.getElementById('react-app')
     );

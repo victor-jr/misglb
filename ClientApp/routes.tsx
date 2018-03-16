@@ -7,20 +7,21 @@ import { Counter } from './components/Counter';
 import { Callback } from './components/Callback';
 import Auth from './service/Auth/Auth';
 
-const auth = new Auth();
+let auth = new Auth();
 
-const handleAuthentication = ({location}: any) => {
-    if (/access_token|id_token|error/.test(location.hash)) {
-        auth.handleAuthentication();
-    }
+const handleAuthentication = (props:any) => {
+  if (/access_token|id_token|error/.test(props.location.hash)) {
+    auth.handleAuthentication(props);
+  }
 }
 
-export const routes = <Layout auth={auth}> 
+export const routes = 
+  <Layout auth={auth}>
     <Route exact path='/' render={(props) => <Home />} />
     <Route path='/counter' render={(props) => <Counter {...props} />} />
     <Route path='/fetchdata' render={(props) => <FetchData {...props} />} />
     <Route path="/callback" render={props => {
-        handleAuthentication(props);
-        return <Callback {...props} />
+      handleAuthentication(props);
+      return <Callback {...props} />
     }} />
-</Layout>;
+  </Layout>;

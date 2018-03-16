@@ -7,18 +7,33 @@ interface LoginButtonProps {
 }
 
 export class LoginButton extends React.Component<LoginButtonProps, {}> {
+    constructor(props: any) {
+        super(props);
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);        
+    }
+
+    handleLogout = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        this.props.auth.logout();
+    }
+
+    handleLogin = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();     
+        this.props.auth.login();
+    }
+    
     public render() {
         const isLoggedIn = this.props.auth.isAuthenticated();
-        console.log(isLoggedIn);
         let button = null;
         if (isLoggedIn) {
             button =
-            <a href="#" onClick={e => this.props.auth.logout()}>
+            <a href="#" onClick={this.handleLogout}>
                 <span className='glyphicon glyphicon-log-out'></span> Logout
             </a>
         } else {
             button = 
-            <a href="#" onClick={e => this.props.auth.login()}>
+            <a href="#" onClick={this.handleLogin}>
                 <span className='glyphicon glyphicon-log-in'></span> Login
             </a>
         }
