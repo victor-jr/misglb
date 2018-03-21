@@ -15,6 +15,11 @@
       "integrity": "sha512-2A0stT6b61DANLErAfSkeQ77N+A3FbR7ardUJUP3xm9f4W8qtG9ispBYDUX42Fl1EbR0rqSV3IWjbB6ew7hXRw==",
       "dev": true
     },
+    "@types/lodash": {
+      "version": "4.14.105",
+      "resolved": "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.105.tgz",
+      "integrity": "sha512-LB5PKR4QNoDrgcl4H8JdhBMp9wHWp0OATkU9EHzuXKiutRwbvsyYmqPUaMSWmdCycJoKHtdAWh47/zSe/GZ1yA=="
+    },
     "@types/react": {
       "version": "15.0.35",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.35.tgz",
@@ -249,7 +254,7 @@
       "integrity": "sha512-e+lJAJeNWuPCNyxZKOBdaJGyLGHugXVQtrAwtuAe2vhxTYxFTKE73p8JuTmdH0qdQZtDvI4dhJwjZc5zsfIsYw==",
       "dev": true,
       "requires": {
-        "lodash": "4.17.4"
+        "lodash": "4.17.5"
       }
     },
     "async-each": {
@@ -305,7 +310,7 @@
         "colors": "1.1.2",
         "enhanced-resolve": "3.1.0",
         "loader-utils": "1.1.0",
-        "lodash": "4.17.4",
+        "lodash": "4.17.5",
         "micromatch": "3.0.3",
         "mkdirp": "0.5.1",
         "object-assign": "4.1.1",
@@ -565,7 +570,7 @@
         "babel-traverse": "6.25.0",
         "babel-types": "6.25.0",
         "babylon": "6.17.4",
-        "lodash": "4.17.4"
+        "lodash": "4.17.5"
       }
     },
     "babel-traverse": {
@@ -582,7 +587,7 @@
         "debug": "2.6.7",
         "globals": "9.18.0",
         "invariant": "2.2.2",
-        "lodash": "4.17.4"
+        "lodash": "4.17.5"
       }
     },
     "babel-types": {
@@ -593,7 +598,7 @@
       "requires": {
         "babel-runtime": "6.23.0",
         "esutils": "2.0.2",
-        "lodash": "4.17.4",
+        "lodash": "4.17.5",
         "to-fast-properties": "1.0.3"
       }
     },
@@ -3302,9 +3307,9 @@
       }
     },
     "lodash": {
-      "version": "4.17.4",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz",
-      "integrity": "sha1-eCA6TRwyiuHYbcpkYONptX9AVa4="
+      "version": "4.17.5",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.5.tgz",
+      "integrity": "sha512-svL3uiZf1RwhH+cWrfZn3A4+U58wbP0tGVTLQPbjplZxZ8ROD9VLuNgsRniTlLe7OlSqR79RUehXgpBW/s0IQw=="
     },
     "lodash.camelcase": {
       "version": "4.3.0",
@@ -4658,7 +4663,7 @@
       "integrity": "sha1-RABCa8+oDKpnJMd1VpUxUgn6Swc=",
       "dev": true,
       "requires": {
-        "lodash": "4.17.4"
+        "lodash": "4.17.5"
       }
     },
     "react-router": {
@@ -4941,7 +4946,7 @@
         "babel-runtime": "6.26.0",
         "classnames": "2.2.5",
         "fbjs": "0.8.16",
-        "lodash": "4.17.4",
+        "lodash": "4.17.5",
         "prop-types": "15.5.10"
       },
       "dependencies": {

@@ -4,6 +4,7 @@ import Auth from '../service/Auth/Auth';
 
 interface LoginButtonProps {
     auth: Auth;
+    handleLayoutLogout: Function;
 }
 
 export class LoginButton extends React.Component<LoginButtonProps, {}> {
@@ -16,6 +17,7 @@ export class LoginButton extends React.Component<LoginButtonProps, {}> {
     handleLogout = (event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         this.props.auth.logout();
+        this.props.handleLayoutLogout();
     }
 
     handleLogin = (event: React.MouseEvent<HTMLAnchorElement>) => {

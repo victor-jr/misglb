@@ -1,15 +1,4 @@
 import * as auth0 from 'auth0-js';
-import history from '../History/History';
-
-interface Profile {
-  family_name: string,
-  given_name: string,
-  locale: string,
-  name: string,
-  picture: string,
-  sub: string,
-  updated_at: string
-}
 
 export default class Auth {
   private _auth0 = new auth0.WebAuth({
@@ -22,6 +11,7 @@ export default class Auth {
   })
 
   userProfile: any;
+  history: any;
 
   constructor() {
     this.login = this.login.bind(this);
@@ -29,33 +19,34 @@ export default class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.userProfile = {};
+    this.history = null;
   }
 
-  handleAuthentication(props:any) {
+  handleAuthentication(history: any) {
+    this.history = history;
     this._auth0.parseHash((err: any, authResult: any) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        props.history.replace('/');
+        this.history.replace('/');
       } else if (err) {
-        props.history.replace('/');
+        this.history.replace('/');
         console.log(err);
         return err;
       }
     })
   }
 
-  getProfile(cb: any) {
-    if (this.isAuthenticated()) {
-      const token = String(localStorage.getItem('access_token'));
-      this._auth0.client.userInfo(token, (err, profile) => {
-        if(profile) {
-          this.userProfile = profile;
-          cb(err,profile);
-        } else {
-          console.log(profile);
-        }
-      })
-    }
+  getProfile(cb: any) {    
+    const token = String(localStorage.getItem('access_token'));
+    this._auth0.client.userInfo(token, (err, profile) => {
+      if(profile) {
+        this.userProfile = profile;
+        cb(err, profile);
+      } else {
+        console.log(err);
+      }
+    })
   }
 
   setSession(authResult: any) {
@@ -63,15 +54,14 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    history.replace('/');
   }
 
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    this.userProfile = null;
-    history.replace('/');
+    this.userProfile = {};
+    // this.history.replace('/');
   }
 
   login() {

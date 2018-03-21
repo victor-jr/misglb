@@ -11,12 +11,12 @@ let auth = new Auth();
 
 const handleAuthentication = (props:any) => {
   if (/access_token|id_token|error/.test(props.location.hash)) {
-    auth.handleAuthentication(props);
+    auth.handleAuthentication(props.history);
   }
 }
 
 export const routes = 
-  <Layout auth={auth}>
+  <Layout auth={auth} >
     <Route exact path='/' render={(props) => <Home />} />
     <Route path='/counter' render={(props) => <Counter {...props} />} />
     <Route path='/fetchdata' render={(props) => <FetchData {...props} />} />
