@@ -6,6 +6,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Callback } from './components/Callback';
 import Auth from './service/Auth/Auth';
+import NewApplication from './pages/NewApplication';
 
 let auth = new Auth();
 
@@ -20,6 +21,7 @@ export const routes =
     <Route exact path='/' render={(props) => <Home />} />
     <Route path='/counter' render={(props) => <Counter {...props} />} />
     <Route path='/fetchdata' render={(props) => <FetchData {...props} />} />
+    <Route path='/new-application' render={(props) => <NewApplication {...props} />} />
     <Route path="/callback" render={props => {
       handleAuthentication(props);
       return <Callback {...props} />

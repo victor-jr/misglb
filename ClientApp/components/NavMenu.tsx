@@ -22,6 +22,7 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
     if (!_.isEmpty(profile)) {
       avatar = <Image size='small' circular src={profile.picture} />
     }
+
     return <div className='main-nav'>
       <div className='navbar navbar-inverse'>
         <div>
@@ -52,6 +53,11 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
               <NavLink to={'/fetchdata'} activeClassName='active'>
                 <span className='glyphicon glyphicon-th-list'></span> Fetch data
                             </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/new-application'} activeClassName='active'>
+                <Icon name="plus" /> New Application
+              </NavLink>
             </li>
             <LoginButton {...this.props} />
           </ul>
