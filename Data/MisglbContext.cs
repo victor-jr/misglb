@@ -12,7 +12,7 @@ namespace Misglb.Data
         public DbSet<Application> Applications { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Parent> Parents { get; set; }
-        public DbSet<School> Schools { get; set; }
+        // public DbSet<School> Schools { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Misglb.Data
             modelBuilder.Entity<Application>().ToTable("Application");
             modelBuilder.Entity<Contact>().ToTable("Contact");
             modelBuilder.Entity<Parent>().ToTable("Parent");
-            modelBuilder.Entity<School>().ToTable("School");
+            // modelBuilder.Entity<School>().ToTable("School");
 
             // modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.Id).HasMaxLength(85));
             // modelBuilder.Entity<IdentityRole>(entity => entity.Property(m => m.NormalizedName).HasMaxLength(85));
@@ -38,6 +38,7 @@ namespace Misglb.Data
             // modelBuilder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.Id).HasMaxLength(85));
             // modelBuilder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));
 
+            /*
             modelBuilder.Entity<Application>()
                 .Property(p => p.TotalExpenses)
                 .HasComputedColumnSql("`Tuiton` + `Supplies` + `RoomAndBoard` + `HealthInsurance` + `Miscellaneous` + `Transportation` + `Airfare`");
@@ -50,7 +51,7 @@ namespace Misglb.Data
             modelBuilder.Entity<Application>()
                 .Property(p => p.TotalFinAssistanceNeeded)
                 .HasComputedColumnSql("(`Tuiton` + `Supplies` + `RoomAndBoard` + `HealthInsurance` + `Miscellaneous` + `Transportation` + `Airfare`) - (`PellGrant` + `CollegeScholarship` + `OtherScholarship` + `ParentalSupport` + `SavingsDividendsInterests` + `EmploymentIncome` + `SpouseIncome` + `GovernmentSalary` + `Compensation` + `OthersResources` + `OthersFinancial`)");
-
+            */
         }
     }
 }

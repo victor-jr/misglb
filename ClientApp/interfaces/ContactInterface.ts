@@ -1,10 +1,11 @@
 export default interface ContactInterface {
-  lastName: string | undefined,
-  firstName: string | undefined,
-  country: string | undefined,
-  stateAtoll: string | undefined,
-  address: string | undefined,
-  zip: string | undefined,
-  phone: string | undefined,
-  email: string | undefined
+  lastName: string | null,
+  firstName: string | null,
+  country: string | null,
+  stateAtoll: string | null,
+  address: string | null,
+  zip: string | null,
+  phone: string | null,
+  email: string | null,
+  relationship: string | null
 }

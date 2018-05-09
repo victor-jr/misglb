@@ -21,7 +21,7 @@ export class FetchData extends React.Component<RouteComponentProps<{}>, FetchDat
         .then(response => response.json() as Promise<WeatherForecast[]>)
             .then(data => {
                 this.setState({ forecasts: data, loading: false });
-            });
+            });        
 
     }
 

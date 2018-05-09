@@ -59,8 +59,10 @@ namespace Misglb.Data
                     HomeAtoll = "Jaluit",
                     EbeyeKwajResOrLandOwner = false,
                     MartialStatus = MartialStatus.Single,
+                    hasChildren = false,
                     // No Children
                     ParentMartialStatus = ParentsStatus.Married,
+                    /*
                     DegreeSought = "M.A.",
                     CollegeStanding = CollegeStanding.Senior,
                     FieldOfStudy = "MIS",
@@ -99,6 +101,7 @@ namespace Misglb.Data
                     // totalfinassistanceneeded auto summed and set
                     HasFather = true,
                     HasMother = true
+                    */
                 },
                 new Application
                 {
@@ -118,8 +121,10 @@ namespace Misglb.Data
                     HomeAtoll = "Majuro",
                     EbeyeKwajResOrLandOwner = false,
                     MartialStatus = MartialStatus.Single,
+                    hasChildren = false,
                     // No Children
                     ParentMartialStatus = ParentsStatus.Married,
+                    /*
                     DegreeSought = "B.A.",
                     CollegeStanding = CollegeStanding.Freshman,
                     DateFinAidNeeded = DateTime.Parse("2017-11-01"),
@@ -155,6 +160,7 @@ namespace Misglb.Data
                     // totalFinAssistanceNeeded auto summed and set
                     HasFather = true,
                     HasMother = true
+                    */
                 }
             };
             foreach (Application a in applications)
@@ -320,6 +326,7 @@ namespace Misglb.Data
             }
             context.SaveChanges();
 
+            /*
             //Current Colleges
             var currentColleges = new CurrentCollege[]
             {
@@ -401,6 +408,7 @@ namespace Misglb.Data
                 context.Schools.Add(h);
             }
             context.SaveChanges();
+            */
         }
     }
 }

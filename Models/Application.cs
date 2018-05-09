@@ -163,6 +163,12 @@ namespace Misglb.Models
         [Display(Name = "Martial Status")]
         public MartialStatus MartialStatus { get; set; }
 
+        [Display(Name = "Spouse Name")]
+        public string SpouseName { get; set; }
+
+        [Display(Name = "Has Children")]
+        public bool hasChildren { get; set; }
+
         [Display(Name = "Name and Age of Your Children")]
         [DataType(DataType.MultilineText)]
         public string Children { get; set; }
@@ -195,6 +201,7 @@ namespace Misglb.Models
         [ModelBinder(BinderType = typeof(ParentOptionalBinder), Name = "Guardian")]
         public Guardian Guardian { get; set; }
 
+        /*
         [Display(Name = "Current College")]
         public CurrentCollege CurrentCollege { get; set; }
 
@@ -370,5 +377,7 @@ namespace Misglb.Models
         public ApprovalStatus ApprovalStatus { get; set; }
 
         public bool Viewed { get; set; }
+
+        */
     }
 }

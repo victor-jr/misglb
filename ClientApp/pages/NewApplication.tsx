@@ -39,23 +39,40 @@ export default class NewApplication extends React.Component<{}, NewApplicationSt
     }
   }
 
-  handleFormChange = (e: React.FormEvent<HTMLInputElement>, data: any, subObject?: string) => {
-    let { value, name, type, checked } = data;      
-    console.log(subObject);
+  handleFormChange = (e: React.FormEvent<HTMLInputElement>, data: any, subObject?: string) => {    
+    let { value, name, type, checked } = data; 
+    let { formData } = this.state;
 
+    if (subObject) {
+      if (type === 'number') {
+        value = parseFloat(value);
+      }
+      
+      formData = _.set(formData, `${subObject}.${name}`, value);
+      
+    } else {
+      
     if(type === 'checkbox') {
-      value = checked;
+      value = checked; 
     }
-    
+
     if (type === 'number') {
       value = parseFloat(value);
     }
+    
+    formData = _.set(formData, name, value);    
+    
+    if (name === 'hasChildren') {
+      formData = _.set(formData, 'children', null);
+    }
+      
+    if (value === 'Single' || value === 'Widowed,Divorced,Seperate') {
+      formData = _.set(formData, 'spouseName', null);          
+    }
 
-    this.setState((prevState: any) => ({
-      formData: {
-        ...prevState.formData,
-        [name]: value
-      }
+  }
+    this.setState(() => ({
+      formData
     }))
   }
   

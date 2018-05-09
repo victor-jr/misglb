@@ -16,7 +16,7 @@ namespace misglb.Controllers
         };
 
         [HttpGet("[action]")]
-        [Authorize]
+        // [Authorize]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var rng = new Random();
