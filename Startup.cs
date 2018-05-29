@@ -27,7 +27,7 @@ namespace Misglb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MisglbDbContext>(options => {
-                options.UseMySQL("server=localhost;userid=root;password=root;database=misglb;");
+                options.UseMySQL("server=localhost;userid=root;database=misglb;");
             });
 
             string domain = $"https://{Configuration["Auth0:Domain"]}/";
@@ -39,9 +39,9 @@ namespace Misglb
                 options.Audience = "http://localhost:5000/api/";
             });
             
-            services.AddMvc();
-
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

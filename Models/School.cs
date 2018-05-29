@@ -20,9 +20,6 @@ namespace Misglb.Models
 
         public string Zip { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int? ApplicationId { get; set; }
-
         public ICollection<Application> Application { get; set; }
     }
 }

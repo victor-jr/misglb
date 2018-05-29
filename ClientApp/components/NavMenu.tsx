@@ -17,7 +17,8 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
   }
   
   public render() {
-    const { profile } = this.props;
+    const { profile, auth } = this.props;
+    
     let avatar = null;
     if (!_.isEmpty(profile)) {
       avatar = <Image size='small' circular src={profile.picture} />
@@ -54,11 +55,14 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
                 <span className='glyphicon glyphicon-th-list'></span> Fetch data
                             </NavLink>
             </li>
-            <li>
-              <NavLink to={'/new-application'} activeClassName='active'>
-                <Icon name="plus" /> New Application
-              </NavLink>
-            </li>
+            {
+              auth.isAuthenticated() &&
+              <li>
+                <NavLink to={'/new-application'} activeClassName='active'>
+                  <Icon name="plus" /> New Application
+                </NavLink>
+              </li>
+            }
             <LoginButton {...this.props} />
           </ul>
         </div>

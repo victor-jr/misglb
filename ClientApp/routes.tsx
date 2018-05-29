@@ -7,6 +7,7 @@ import { Counter } from './components/Counter';
 import { Callback } from './components/Callback';
 import Auth from './service/Auth/Auth';
 import NewApplication from './pages/NewApplication';
+import ViewApplication from './pages/ViewApplication';
 
 let auth = new Auth();
 
@@ -18,10 +19,11 @@ const handleAuthentication = (props:any) => {
 
 export const routes = 
   <Layout auth={auth} >
-    <Route exact path='/' render={(props) => <Home />} />
+    <Route exact path='/' render={(props) => <Home {...props} auth={auth} />} />
     <Route path='/counter' render={(props) => <Counter {...props} />} />
     <Route path='/fetchdata' render={(props) => <FetchData {...props} />} />
-    <Route path='/new-application' render={(props) => <NewApplication {...props} />} />
+    <Route path='/new-application' render={(props) => <NewApplication auth={auth} {...props} />} />
+    <Route path='/view-applicaiton' render={props => <ViewApplication {...props} />} />
     <Route path="/callback" render={props => {
       handleAuthentication(props);
       return <Callback {...props} />

@@ -20,30 +20,11 @@ namespace Misglb.Data
                 return; // DB has been seeded
             }
 
-            // var role = new IdentityRole
-            // {
-            //     Name = "Admin"
-            // };
-            // _roleManager.CreateAsync(role);
-
-            // string email = "admin@fake.com";
-
-            // var user = new IdentityUser { UserName = email, Email = email };
-
-            // string userPWD = "Password_123";
-
-            // Task<IdentityResult> userCreateTask = _userManager.CreateAsync(user, userPWD);
-            // userCreateTask.Wait();
-            //Task<string> code =  _userManager.GenerateEmailConfirmationTokenAsync(user);
-            //_userManager.ConfirmEmailAsync(user, code.Result);
-            // Task<IdentityResult> roleCreateTask = _userManager.AddToRoleAsync(user, "Admin");
-            // roleCreateTask.Wait();
-
             var applications = new Application[]
             {
                 new Application
                 {
-                    // IdentityUser = user,
+                    UserId = "111",
                     AcademicYearStart = DateTime.Parse("2017-08-08"),
                     AcademicYearEnd = DateTime.Parse("2018-01-08"),
                     IsSummerApplication = false,
@@ -59,6 +40,7 @@ namespace Misglb.Data
                     HomeAtoll = "Jaluit",
                     EbeyeKwajResOrLandOwner = false,
                     MartialStatus = MartialStatus.Single,
+                    hasChildren = false,
                     // No Children
                     ParentMartialStatus = ParentsStatus.Married,
                     DegreeSought = "M.A.",
@@ -78,7 +60,7 @@ namespace Misglb.Data
                     ExpenseTermSemesterSpecific = Semester.Spring,
                     // no expensetermsemesterspecific
                     TuitionType = TuitionType.NA,
-                    Tuiton = 100.00m,
+                    Tuition = 100.00m,
                     Supplies = 100.00m,
                     RoomAndBoardMonths = 4,
                     RoomAndBoard = 100.00m,
@@ -98,11 +80,12 @@ namespace Misglb.Data
                     // totalfinancial auto summed and set
                     // totalfinassistanceneeded auto summed and set
                     HasFather = true,
-                    HasMother = true
+                    HasMother = true,
+                    HasGuardian = false
                 },
                 new Application
                 {
-                    // IdentityUser = user,
+                    UserId = "123",
                     AcademicYearStart = DateTime.Parse("2017-08-08"),
                     AcademicYearEnd = DateTime.Parse("2018-01-08"),
                     IsSummerApplication = false,
@@ -118,6 +101,7 @@ namespace Misglb.Data
                     HomeAtoll = "Majuro",
                     EbeyeKwajResOrLandOwner = false,
                     MartialStatus = MartialStatus.Single,
+                    hasChildren = false,
                     // No Children
                     ParentMartialStatus = ParentsStatus.Married,
                     DegreeSought = "B.A.",
@@ -134,7 +118,7 @@ namespace Misglb.Data
                     EducationExpenseTermType = ExpenseType.Per_Academic_Year,
                     // No ExpenseTermSemesterSpecific
                     TuitionType = TuitionType.NA,
-                    Tuiton = 100.00m,
+                    Tuition = 100.00m,
                     Supplies = 200.00M,
                     RoomAndBoardMonths = 4,
                     RoomAndBoard = 200.00M,
@@ -154,7 +138,8 @@ namespace Misglb.Data
                     // TotalFinancial auto summed and set
                     // totalFinAssistanceNeeded auto summed and set
                     HasFather = true,
-                    HasMother = true
+                    HasMother = true,
+                    HasGuardian = false,
                 }
             };
             foreach (Application a in applications)
@@ -231,32 +216,26 @@ namespace Misglb.Data
             {
                 new EmergencyContact
                 {
-                    Application = apps1,
+                    Application = applications[0],
                     LastName = "Garcia",
                     FirstName = "Leilani",
-                    Country = "RMI",
-                    State_Atoll = "Majuro",
-                    Address = "PO Box 123",
-                    Zip = "96960",
                     Phone = "6924560277",
-                    Email = "econtact@gmail.com"
+                    Email = "econtact@gmail.com",
+                    Relationship = "Mother"
                 },
                 new EmergencyContact
                 {
-                    Application = apps2,
+                    Application = applications[1],
                     LastName = "Jane",
                     FirstName = "Sue",
-                    Country = "RMI",
-                    State_Atoll = "Majuro",
-                    Address = "PO Box 123",
-                    Zip = "96960",
                     Phone = "6924560277",
-                    Email = "econtact@gmail.com"
+                    Email = "econtact@gmail.com",
+                    Relationship = "Mother"
                 }
             };
             foreach (EmergencyContact e in emergencyContacts)
             {
-                context.Contacts.Add(e);
+                context.EmergencyContact.Add(e);
             }
             context.SaveChanges();
 
@@ -320,6 +299,7 @@ namespace Misglb.Data
             }
             context.SaveChanges();
 
+            
             //Current Colleges
             var currentColleges = new CurrentCollege[]
             {
@@ -347,7 +327,7 @@ namespace Misglb.Data
                 context.Schools.Add(c);
             }
             context.SaveChanges();
-
+            
             //Prior Collegs
             var priorColleges = new PriorCollege[]
             {

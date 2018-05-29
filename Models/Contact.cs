@@ -33,9 +33,6 @@ namespace Misglb.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int? ApplicationRef { get; set; }
-
         public ICollection<Application> Application { get; set; }
     }
 }
