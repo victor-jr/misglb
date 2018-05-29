@@ -27,7 +27,7 @@ namespace Misglb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MisglbDbContext>(options => {
-                options.UseMySQL("server=localhost;userid=root;password=root;database=misglb;");
+                options.UseMySQL("server=localhost;userid=root;database=misglb;");
             });
 
             string domain = $"https://{Configuration["Auth0:Domain"]}/";

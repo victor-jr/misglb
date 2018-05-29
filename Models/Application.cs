@@ -77,7 +77,8 @@ namespace Misglb.Models
         [Key]
         public int ID { get; set; }
 
-        public IdentityUser IdentityUser { get; set; }
+        [Required]
+        public string UserId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -201,7 +202,6 @@ namespace Misglb.Models
         [ModelBinder(BinderType = typeof(ParentOptionalBinder), Name = "Guardian")]
         public Guardian Guardian { get; set; }
 
-        /*
         [Display(Name = "Current College")]
         public CurrentCollege CurrentCollege { get; set; }
 
@@ -288,7 +288,7 @@ namespace Misglb.Models
 
         [Required]
         [Column(TypeName = "decimal")]
-        public decimal Tuiton { get; set; }
+        public decimal Tuition { get; set; }
 
         [Required]
         [Column(TypeName = "decimal")]
@@ -373,11 +373,12 @@ namespace Misglb.Models
         [Column(TypeName = "decimal")]
         public decimal TotalFinAssistanceNeeded { get; private set; }
 
+        public decimal AwardAmount { get; set; }
+
         [Display(Name = "Approval Status")]
         public ApprovalStatus ApprovalStatus { get; set; }
 
         public bool Viewed { get; set; }
 
-        */
     }
 }

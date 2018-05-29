@@ -1,4 +1,5 @@
 import * as auth0 from 'auth0-js';
+import { UserInterface, User } from '../../interfaces/UserInterface';
 
 export default class Auth {
   private _auth0 = new auth0.WebAuth({
@@ -10,7 +11,7 @@ export default class Auth {
     scope: 'openid profile'
   })
 
-  userProfile: any;
+  userProfile: auth0.Auth0UserProfile | null;
   history: any;
 
   constructor() {
@@ -19,7 +20,7 @@ export default class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getProfile = this.getProfile.bind(this);
-    this.userProfile = {};
+    this.userProfile = null;
     this.history = null;
   }
 
@@ -60,7 +61,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    this.userProfile = {};
+    this.userProfile = null;
     // this.history.replace('/');
   }
 

@@ -27,7 +27,6 @@ namespace Misglb.Validations
             return true;
         }
         
-        /*
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             Models.Application application = validationContext.ObjectInstance as Models.Application;
@@ -39,7 +38,6 @@ namespace Misglb.Validations
 
             return new ValidationResult(GetPriorCollegeCheckErrorMessage());
         }
-        */
 
         private ValidationResult checkValidCheckboxAndValuesPresent(School priorCollege, bool hasPriorCollege)
         {

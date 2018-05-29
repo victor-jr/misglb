@@ -42,7 +42,6 @@ namespace Misglb.Validations
             return true;
         }
 
-        /*
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             Models.Application application = (Models.Application)validationContext.ObjectInstance;
@@ -54,7 +53,6 @@ namespace Misglb.Validations
 
             return ValidationResult.Success;
         }
-        */
 
         private String GetTermSemesterErrorMessage()
         {
