@@ -19,7 +19,7 @@ export class Layout extends React.Component<LayoutProps, LayoutStates> {
       profile: {}
     };
   }
-
+  
   getProfileInfo = () => {
     const { getProfile, userProfile } = this.props.auth;
     getProfile( (err: any, profile: any) => {

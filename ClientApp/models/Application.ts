@@ -16,22 +16,23 @@ export class Application implements ApplicationInterface {
   applicationStatus =  null;
   lastName =  null;
   firstName =  null;
-  nickName =  null
+  nickName =  null;
+  fullName = null;
   ssn =  null;
   currentContact = new CurrentContact();
   permanentContact = new PermanentContact();
-  gender =  null;
+  gender = 0;
   dob =  format(new Date(), 'YYYY-MM-DD');
   placeOfBirth =  null;
   age =  null;
   homeAtoll =  null;
   ebeyeKwajResOrLandOwner = false;
-  martialStatus = null;
+  martialStatus = 0;
   spouseName = null;
   hasChildren = false;
   children =  null;
   emergencyContact = new EmergencyContact();
-  parentMartialStatus =  null;
+  parentMartialStatus = 0;
   father = new Father();
   mother = new Mother();
   guardian = new Guardian();
@@ -52,9 +53,9 @@ export class Application implements ApplicationInterface {
   othersResources =  0;
   receivedFinAidBefore =  false;
   receivedFinAidBeforeDate =  format(new Date(), 'YYYY-MM-DD');
-  educationExpenseTermType =  null;
-  expenseTermSemesterSpecific =  null;
-  tuitionType =  null;
+  educationExpenseTermType = 0;
+  expenseTermSemesterSpecific = 0;
+  tuitionType = 0;
   tuition =  0;
   supplies =  0;
   roomAndBoardMonths =  0;
@@ -64,8 +65,8 @@ export class Application implements ApplicationInterface {
   transportation =  0;
   airfare =  0;
   totalExpenses =  0;
-  financialExpenseTermType =  null;
-  financialExpenseSemesterSpecific =  null;
+  financialExpenseTermType = 0;
+  financialExpenseSemesterSpecific = 0;
   pellGrant =  0;
   collegeScholarship =  0;
   otherScholarship =  0;
@@ -104,6 +105,7 @@ abstract class Parent implements ParentInterface {
   alive = false;
   age = null;
   employer = null;
+  annualIncome = null;
 }
 
 export class Father extends Parent {};

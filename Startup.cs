@@ -38,6 +38,10 @@ namespace Misglb
                 options.Authority = domain;
                 options.Audience = "http://localhost:5000/api/";
             });
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
             
             services
                 .AddMvc()
@@ -62,6 +66,8 @@ namespace Misglb
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseAuthentication();
 

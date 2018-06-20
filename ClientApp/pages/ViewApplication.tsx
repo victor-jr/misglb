@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Container, Menu } from 'semantic-ui-react';
+import { Container, Menu, Label, Divider, Icon } from 'semantic-ui-react';
 import Axios from 'axios';
 import ApplicationInterface from '../interfaces/ApplicationInterface';
 import { Application } from '../models/Application';
+import PersonalAppDetail from '../components/PersonalAppDetail';
+import SchoolAppDetail from '../components/SchoolAppDetail';
+import FinancialAppDetail from '../components/FinancialAppDetail';
+import { ApprovalStatus } from '../models/ApplicationOptions';
 
 interface ViewApplicationProps {
   location: any
@@ -10,10 +14,10 @@ interface ViewApplicationProps {
 
 interface ViewApplicationStates {
   application: ApplicationInterface
-  step: number
+  step: Number
 }
 
-export default class ViewApplication extends React.Component<ViewApplicationProps, {}> {
+export default class ViewApplication extends React.Component<ViewApplicationProps, ViewApplicationStates> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -44,30 +48,60 @@ export default class ViewApplication extends React.Component<ViewApplicationProp
   }
   
   render() {
-    const { step } = this.state;
+    const { step, application } = this.state;
 
-    let currentStep = <PersonalAppDetail handleFormChange={this.handleFormChange} handleNextClick={this.handleNextClick} {...this.state} />
+    let currentStep = <PersonalAppDetail app={application} />
 
     switch(step) {
       case 1: 
-        currentStep = <PersonalAppDetail handleFormChange={this.handleFormChange} handleNextClick={this.handleNextClick} {...this.state} />
+        currentStep = <PersonalAppDetail app={application} />
         break; 
       case 2:
-        currentStep = <SchoolAppDetail handleFormChange={this.handleFormChange} handleNextClick={this.handleNextClick} {...this.state} />
+        currentStep = <SchoolAppDetail app={application} />
         break;
       case 3:
-        currentStep = <FinancialAppDetail handleFormChange={this.handleFormChange} handleSubmit={this.handleSubmit} {...this.state} />
+        currentStep = <FinancialAppDetail app={application} />
         break;
+      }
+      
+    let viewed = null;
+    switch(application.viewed) {
+      case false:
+        viewed = <Label color='orange' size='massive'><Icon name='low vision' />Not Yet Viewed</Label>
+        break;
+      case true:
+        viewed = <Label color='green' size='massive'><Icon name='eye' />Viewed</Label>
+        break;
+    }
+    
+    let approval = null;
+    if (application.viewed) {
+      switch(application.approvalStatus) {
+        case 0:
+          approval = <Label color='orange' size='massive'><Icon name='users' />{ApprovalStatus.properties[application.approvalStatus].name}</Label>
+          break;
+        case 1:
+          approval = <Label color='green' size='massive'><Icon name='check' />{ApprovalStatus.properties[application.approvalStatus].name}</Label>
+          break;
+        case 2:
+          approval = <Label color='red' size='massive'><Icon name='user times' />{ApprovalStatus.properties[application.approvalStatus].name}</Label>
+          break;
+      }
     }
 
     return (
       <Container>
+        <br/>
+        <Label size='massive'>{application.academicYear}</Label>
+        <Label size='massive'><strong>Total Financial Assistance Needed:</strong> ${application.totalFinAssistanceNeeded.toFixed(2)}</Label>
+        {viewed}
+        {approval}
         <Menu pointing secondary>
           <Menu.Item name='Personal' active={step === 1} onClick={() => this.handleStepClick(1)} />
           <Menu.Item name='School' active={step === 2} onClick={() => this.handleStepClick(2)} />
           <Menu.Item name='Financial' active={step === 3} onClick={() => this.handleStepClick(3)} />          
         </Menu>
-
+        <Divider />
         <div style={{ padding: '2rem 0 2rem 0' }}>
           {currentStep}
         </div>

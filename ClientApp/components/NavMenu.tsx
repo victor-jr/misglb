@@ -21,7 +21,7 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
     
     let avatar = null;
     if (!_.isEmpty(profile)) {
-      avatar = <Image size='small' circular src={profile.picture} />
+      avatar = <Image size='small' src={profile.picture} />
     }
 
     return <div className='main-nav'>
@@ -45,7 +45,7 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
                 <span className='glyphicon glyphicon-home'></span> Home
                             </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to={'/counter'} activeClassName='active'>
                 <span className='glyphicon glyphicon-education'></span> Counter
                             </NavLink>
@@ -54,7 +54,7 @@ export class NavMenu extends React.Component<NavMenuProps, {}> {
               <NavLink to={'/fetchdata'} activeClassName='active'>
                 <span className='glyphicon glyphicon-th-list'></span> Fetch data
                             </NavLink>
-            </li>
+            </li> */}
             {
               auth.isAuthenticated() &&
               <li>

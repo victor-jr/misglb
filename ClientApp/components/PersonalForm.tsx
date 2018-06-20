@@ -94,8 +94,8 @@ export default class PersonalForm extends React.Component<PersonalFormProps, Per
 
           <Form.Group inline>
             <label>Gender</label>
-            <Form.Radio label='Male' name='gender' value='Male' checked={formData.gender === 'Male'} onChange={(e, data) => handleFormChange(e, data)} />
-            <Form.Radio label='Female' name='gender' value='Female' checked={formData.gender === 'Female'} onChange={(e, data) => handleFormChange(e, data)} />          
+            <Form.Radio label='Male' name='gender' value='1' checked={formData.gender === 0} onChange={(e, data) => handleFormChange(e, data)} />
+            <Form.Radio label='Female' name='gender' value='2' checked={formData.gender === 1} onChange={(e, data) => handleFormChange(e, data)} />          
           </Form.Group>
 
           <Form.Group>

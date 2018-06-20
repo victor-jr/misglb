@@ -40,7 +40,17 @@ namespace misglb.Controllers
     [HttpGet("{id}", Name = "GetApplication")]
     public IActionResult GetApplicationById(long id) 
     {
-      Application application = _context.Applications.FirstOrDefault(a => a.ID == id);
+      Application application = _context.Applications
+        .Include(a => a.CurrentContact)
+        .Include(a => a.PermanentContact)
+        .Include(a => a.EmergencyContact)
+        .Include(a => a.Mother)
+        .Include(a => a.Father)
+        .Include(a => a.Guardian)
+        .Include(a => a.CurrentCollege)
+        .Include(a => a.PriorCollege)
+        .Include(a => a.HighSchool)
+        .FirstOrDefault(a => a.ID == id);
       if (application == null) {
         return NotFound();
       }

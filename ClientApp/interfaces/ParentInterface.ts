@@ -3,5 +3,6 @@ export default interface ParentInterface {
   lastName: string | null,
   alive: boolean,
   age: number | null,
-  employer: string | null
+  employer: string | null,
+  annualIncome: number | null
 }
